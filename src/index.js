@@ -1,17 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+/*
+component hierarchy:
+
+app
+    filterandsearch
+        searchbar
+            countrydropdown
+            searchform
+            gobutton
+        filterlist
+            filter --> maybe do composition/ special types of filters
+                championdropdown
+                patchdropdown
+                datedropdown
+                otherdropdowns
+            filterdetails
+
+    queriedinformation
+        profile
+            icon
+            summonername
+            rank/elo
+        winrates
+        gamehistory
+        
+
+
+
+*/
+
+
+
+
+
+
+function App() {
+    return <div classname= "App">
+        <h1> hi!</h1>
+    </div>
+}
+// ========================================
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <App />,
+    document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
