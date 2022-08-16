@@ -1,0 +1,85 @@
+what does my website do?
+
+https://riot-api-libraries.readthedocs.io/en/latest/index.html
+
+search a summoner, render data.
+data rendered should go as far back as possible. (idk how far back match history goes.)
+match data should be stored on a backend. (might cost money AWS or Azure)
+you should then be able to query (filter) by any parameters you set
+E.G. I want to bring up all my games veigar against kassadin. what success do i have with electro? with comet?
+
+What types of queries do i want? (filter by...)
+- query by your champion 
+	- this might be a prerequisite for other filters.
+- query by champion on enemy team
+	- might have to code lane prediction , but idk
+	- can also manually enter what lane you played (POST request)
+- query by champion on your team
+- query by rune you took
+	- major rune or minor rune? (minor rune might be annoying idk)
+- query by item you built
+	- robustness- what if you sold all items end of game and bought 6 tears
+- query by dragons
+	- we got -'soul' OR <choice of soul>
+	- they got - 'soul' OR <choice of soul>
+	- show winrate
+- query by rift herald
+	- same as dragons
+- query by time
+	- game ended 20 - 25 minutes
+	- game ended > 30 minutes
+	- game ended < 16 minutes 20 seconds
+- query by patch - be able to specify from what patch to what patch. (whats your winrate with patch)
+	- patch 12.0 - 12.0
+	- patch 12.1 - now
+- query by elo
+	- eliminate smurf queue outliers and take the average elo
+- by summoner name on team/enemy team (make 2 different settings probably)
+	- should conjure a winrate with, winrate against.
+	- should show what champions they picked and winrate
+	- robustness - what if a summoner changes his name? 
+- should be able to manually delete a game from the CURRENT search (so it doesnt affect the stats)
+	- maybe if you click something, it grays out and the stats get updated.
+	- making a post request to actually delete something from a search requires more infrastructure, i dont wanna do it
+
+- ANOTHER function of my website - block list/ summoner notes. any wintraders in queue? (might be a separate app)
+	- need a login functionality (or maybe more simply, a password system)
+	- should show previous notes you wrote about
+	- should accept op.gg style XXX joined the lobby XXX joined the lobby
+	- option to delete a note/add a note
+- leveled up skills in a certain way?
+
+
+
+
+
+
+What data is available in the API? how many of your queries are even possible? impossible?
+lets list out apis, what they do, what key values they have
+ACCOUNT-V1
+gets ingamename and server using puuid.
+(using this, can we track previous names past namechanges?)
+puuid doesnt change even if you change in game name
+
+
+SUMMONER-v4 uses name, gets:
+accountid
+puuid -----globally unique------others are not----------------can use this to get gamename and server using Account-V1
+summonerid(id)
+all are encrypted. 
+
+
+data dragon (ddragon) has images and info about champs, runes, items
+- translates championIDs to names.
+
+
+{
+    "id": "r_Ew5-fbK1xGvTw5MHEQi11T6ul-SPKxt9v2zG5rOmVQXHE",
+    "accountId": "slGoMrZDNAuVcvcFFDfU2Fs-GH7ski5F3ETCadCfxHSZpw",
+    "puuid": "VXcOCb-3Y30xblcIExf0909fm5-DnltvBCvXKiztzSbNlkxCnvfoRVWL_7m6a_tJ8oAgD1Mt1nwX4g",
+    "name": "Veiga",
+    "profileIconId": 5411,
+    "revisionDate": 1657134945000,
+    "summonerLevel": 501
+}
+
