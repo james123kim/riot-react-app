@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import SearchBar from './components/searchbar.js'
+import FilterList from './components/filterlist';
 /*
 component hierarchy:
 
 app
     filterandsearch
-        searchbar
-            countrydropdown
-            searchform
+        searchbar         
+            regiondropdown
+            searchinput
             gobutton
         filterlist
             filter --> maybe do composition/ special types of filters
@@ -16,7 +18,7 @@ app
                 patchdropdown
                 datedropdown
                 otherdropdowns
-            filterdetails
+            filterdetails (generated when filter is active , last clicked filter)
 
     queriedinformation
         profile
@@ -34,12 +36,13 @@ app
 
 
 
-
-
 function App() {
-    return <div classname= "App">
-        <h1> hi!</h1>
+    return (
+    <div classname= "App">
+        <SearchBar />
+        <FilterList />
     </div>
+    );
 }
 // ========================================
 

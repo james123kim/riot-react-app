@@ -1,20 +1,28 @@
-class RegionSelect extends React.Component {
+import React from 'react';
+
+import RegionDropdown from "./regiondropdown";
+import SearchInput from "./searchinput";
+import GoButton from "./gobutton";
+
+class SearchBar extends React.Component {
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            
+        };
+    }
+
     render() {
         return (
-            jsx
+            <div>
+                <RegionDropdown></RegionDropdown>
+                <SearchInput></SearchInput>
+                <GoButton></GoButton>
+            </div>
         );
     }
 }
 
-class SearchBar extends React.Component {
 
-}
-
-class GoButton extends React.Component {
-    
-}
-
-
-
-const root = ReactDOM.createRoot(document);
-root.render();
+export default SearchBar;

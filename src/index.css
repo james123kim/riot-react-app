@@ -7,3 +7,47 @@ ol, ul {
   padding-left: 30px;
 }
 
+#filter-container {
+  display:flex;
+  flex-direction: column;
+  border:solid;
+}
+
+#filter-title {
+  margin: 10px;
+}
+
+#filters-and-details {
+  display:flex;
+  height: 500px;
+
+}
+
+#filter-box {
+  padding:0;
+}
+
+#filter-list {
+  height:100%;
+  overflow-y: scroll;
+  list-style: none;
+  padding:0;
+  margin:0;
+}
+
+#filter-list li {
+  border: solid;
+  margin:10px;
+  padding:10px;
+  height: 100px;
+}
+
+#filter-details-box {
+  padding:10px;
+}
+
+.filters-and-details-item {
+  border:solid;
+  margin:10px;
+  flex:1; 
+}

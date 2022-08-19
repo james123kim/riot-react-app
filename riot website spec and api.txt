@@ -13,8 +13,11 @@ What types of queries do i want? (filter by...)
 	- this might be a prerequisite for other filters.
 - query by champion on enemy team
 	- might have to code lane prediction , but idk
-	- can also manually enter what lane you played (POST request)
+	- should be able to match up mid zed vs mid veigar, as opposed to mid veigar vs zed jg
+        - needs a POST request in the match history (lane correction)
+    - in details, should be able to query an ADDITIONAL champion (up to 4)
 - query by champion on your team
+    - should exclude the champion you play, only other 4 slots
 - query by rune you took
 	- major rune or minor rune? (minor rune might be annoying idk)
 - query by item you built
