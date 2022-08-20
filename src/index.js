@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SearchBar from './components/searchbar.js'
-import FilterList from './components/filterlist';
+import FilterAndSearch from './components/filterandsearch';
 /*
 component hierarchy:
 
@@ -25,7 +24,11 @@ app
             icon
             summonername
             rank/elo
-        winrates
+        metrics
+            winrate
+            averagegametime
+            averagecs(averagecspermin)
+            leave room for more. we'll just do winrate for now
         gamehistory
         
 
@@ -33,14 +36,10 @@ app
 
 */
 
-
-
-
 function App() {
     return (
     <div classname= "App">
-        <SearchBar />
-        <FilterList />
+        <FilterAndSearch />
     </div>
     );
 }
