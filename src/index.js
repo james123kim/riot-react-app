@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import SearchBar from './components/searchbar.js'
-import FilterList from './components/filterlist';
+import FilterAndSearch from './components/filterandsearch';
+import QueriedInformation from './components/queriedinformation';
 /*
 component hierarchy:
 
@@ -13,7 +13,7 @@ app
             searchinput
             gobutton
         filterlist
-            filter --> maybe do composition/ special types of filters
+            filters --> maybe do composition/ special types of filters
                 championdropdown
                 patchdropdown
                 datedropdown
@@ -25,8 +25,16 @@ app
             icon
             summonername
             rank/elo
-        winrates
-        gamehistory
+        statistics
+        matchhistory
+            sidebar
+                championinfo
+                otherinfomaybe add here later
+            matches
+                match
+                match
+                match
+                pagenav
         
 
 
@@ -38,9 +46,9 @@ app
 
 function App() {
     return (
-    <div classname= "App">
-        <SearchBar />
-        <FilterList />
+    <div className= "App">
+        <FilterAndSearch />
+        <QueriedInformation />
     </div>
     );
 }

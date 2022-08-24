@@ -15,6 +15,8 @@ class FilterList extends React.Component {
                             <YourChampionFilter></YourChampionFilter>
                             <AllyChampionFilter></AllyChampionFilter>
                             <EnemyChampionFilter></EnemyChampionFilter>
+                            <YourChampionFilter></YourChampionFilter>
+                            <AllyChampionFilter></AllyChampionFilter>
                         </ul>
                     </div>
                     <FilterDetails></FilterDetails>
