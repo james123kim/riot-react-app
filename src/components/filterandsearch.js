@@ -1,12 +1,11 @@
 import React from 'react';
-import SearchBar from './components/searchbar.js'
-import FilterList from './components/filterlist';
-
+import SearchBar from './searchbar.js';
+import FilterList from './filterlist.js'
 
 class FilterAndSearch extends React.Component {
     render() {
         return (
-            <div classname="filterandsearch">
+            <div id = "filter-and-search">
                 <SearchBar />
                 <FilterList />
             </div>

@@ -3116,3 +3116,22 @@ example match data output (not timeline)
 
 
 
+
+
+----------------------------------------------------------------------------------------------------------------
+
+lets talk about data.
+Riot stores match data on match-v5. How far back can I go? 
+you can set 'count' to get 100 games.
+you can set 'start' to start anywhere from 1-1000.
+you can get up to the last 1000 games or up to 2 years whichever is less.
+
+For my project, I want to store previous data too. Matches from seasons ago. Riot will eventually delete this data from their servers.
+Therefore, it is necessary to make a list of WHAT needs to be stored on the backend to properly query matches from seasons ago. 
+The problem here is that I'm not familiar enough with the API to know this. But i will make a list of potential problems I need to cover.
+
+Rune reworks? item overhauls? does data dragon have previous items? Champion changes? 
+- this means that I cannot query things every time
+- the solution is the keep an inhouse list of itemIDs, mapping them to their actual names.
+    - if stormrazor gets removed next season, keep itemID 1234 ---> "stormrazor" + icon. that way, last season games can still be queried.
+

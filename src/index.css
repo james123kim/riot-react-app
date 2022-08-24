@@ -11,6 +11,7 @@ ol, ul {
   display:flex;
   flex-direction: column;
   border:solid;
+  margin:20px 0px;
 }
 
 #filter-title {
@@ -39,15 +40,96 @@ ol, ul {
   border: solid;
   margin:10px;
   padding:10px;
-  height: 100px;
+  min-height: 100px;
 }
 
 #filter-details-box {
-  padding:10px;
 }
 
 .filters-and-details-item {
   border:solid;
   margin:10px;
-  flex:1; 
+  flex:1;
+}
+
+#queried-information {
+  border:solid;
+  min-height: 800px;
+  min-width: 1000px;
+}
+
+#profile-and-statistics {
+  display:flex;
+  min-height:200px;
+}
+
+#profile {
+  border:solid;
+  flex:1;
+}
+
+#statistics {
+  border:solid;
+  flex:2;
+}
+
+.profile-statistics-item {
+  margin:10px;
+  padding:10px;
+}
+
+#profile {
+  display:flex;
+}
+
+#profile-summoner-info {
+  margin:10px;
+}
+
+#summoner-icon {
+  border: solid;
+  width: 80px;
+  height: 80px;
+}
+
+#profile-ranked-info {
+  margin:10px;
+}
+
+#tier-icon {
+  border: solid;
+  width: 80px;
+  height: 80px;
+}
+
+#match-history {
+  border:solid;
+  margin:10px;
+  height:100%;
+  display:flex;
+}
+
+#sidebar {
+  border:solid;
+  margin:10px;
+  min-width: 300px;
+  height:100%;
+  flex: 1;
+}
+
+#matches {
+  flex: 3;
+}
+
+.match {
+  margin:10px;
+  border: solid;
+  min-height: 100px;
+}
+
+#page-navigation {
+  margin: 10px auto;
+  border:solid;
+  height:80px;
+  width: 300px; 
 }
