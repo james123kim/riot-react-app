@@ -43,9 +43,6 @@ ol, ul {
   min-height: 100px;
 }
 
-#filter-details-box {
-}
-
 .filters-and-details-item {
   border:solid;
   margin:10px;
@@ -126,9 +123,6 @@ ol, ul {
   border: solid;
   min-height: 150px;
 }
-
-
-
 
 
 #page-navigation {

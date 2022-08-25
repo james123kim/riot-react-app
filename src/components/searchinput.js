@@ -7,17 +7,16 @@ class SearchInput extends React.Component {
     }
 
     handleChange(e) {
-        this.props.onNameChange(e.target.value);
+        this.props.handleNameChange(e.target.value);
     }
 
     render() {
-        const nameinput = this.props.ingamename;
         return (
-            <input 
-                type="text" 
-                placeholder = "Summoner Name" 
-                onChange= {this.handleChange}
-                value ={nameinput}
+            <input
+                type="text"
+                placeholder = "Summoner Name"
+                onChange = {this.handleChange}
+                value = {this.props.ingamename}
             >
             </input>
         );

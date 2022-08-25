@@ -3144,3 +3144,20 @@ Rune reworks? item overhauls? does data dragon have previous items? Champion cha
 - the solution is the keep an inhouse list of itemIDs, mapping them to their actual names.
     - if stormrazor gets removed next season, keep itemID 1234 ---> "stormrazor" + icon. that way, last season games can still be queried.
 
+
+
+So with this in mind, what should happen when I press "submit"? 
+1) regiondropdown + ign should make a fetch request to summoner-v4 to get the puuid. 
+2) use the puuid in MATCH-v5 to get match history, 1-1000.  and UPDATE the database. 
+    - should check the front of the database (most recently updated)
+    - adding matches from MATCH-v5 until most recent game matches.
+3) THEN the filters come into play. the database
+    - each filter should change the SQL query.
+
+
+
+*** do i need a database? maybe make a version without a database first.
+fetch the data, parse it, filter based on queries. should work.
+
+
+----------------------------------------------------------------------------------------------------------------------------------

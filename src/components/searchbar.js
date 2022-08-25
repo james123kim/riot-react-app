@@ -2,40 +2,34 @@ import React from 'react';
 
 import RegionDropdown from "./regiondropdown";
 import SearchInput from "./searchinput";
-import GoButton from "./gobutton";
+import SubmitButton from "./submitbutton";
 
 class SearchBar extends React.Component {
     constructor(props)
     {
         super(props);
-        this.state = {
-            region: "NA",
-            ingamename: "",
-        };
 
-        this.handleNameChange = this.handleNameChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleNameChange(nameinput) {
-        this.setState({ingamename:nameinput});
-    }
-
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.onFormSubmit(e);
     }
 
     render() {
         return (
-            <div>
-                <RegionDropdown></RegionDropdown>
-                <SearchInput
-                    ingamename = {this.state.ingamename}
-                    onNameChange = {this.handleNameChange}
+            <form onSubmit={this.handleSubmit}>
+                <RegionDropdown 
+                    handleRegionChange = {this.props.handleRegionChange}
+                    region = {this.props.region}
                     />
-                <GoButton></GoButton>
-            </div>
+                <SearchInput
+                    handleNameChange = {this.props.handleNameChange}
+                    ingamename = {this.props.ingamename}
+                    />
+                <SubmitButton/>
+            </form>
         );
     }
 }
