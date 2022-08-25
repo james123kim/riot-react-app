@@ -25,25 +25,33 @@ app
             icon
             summonername
             rank/elo
-<<<<<<< HEAD
-        metrics
-            winrate
-            averagegametime
-            averagecs(averagecspermin)
-            leave room for more. we'll just do winrate for now
-        gamehistory
-=======
         statistics
         matchhistory
             sidebar
-                championinfo
-                otherinfomaybe add here later
+                championsplayed
+                other info maybe add here later
             matches
                 match
+                    matchtype
+                    yourchampionitemsummsrunes
+                        champion
+                        ingamelevel
+                        summonerspells
+                        runes
+                        items
+                    yourmatchstats
+                        kda
+                        killparticipation
+                        controlwards
+                        cs (total and per min)
+                        averagerank(exclude outliers)
+                    teampcomp
+                        option to fix matchups/lanes
+                    wholematchstats
+                    moredetails       -implement later
                 match
                 match
                 pagenav
->>>>>>> 3a63cec9f8f3f0770d54351ce37c2202cea3e9b1
         
 
 
@@ -58,7 +66,6 @@ function App() {
     </div>
     );
 }
-// ========================================
 
 ReactDOM.render(
     <App />,

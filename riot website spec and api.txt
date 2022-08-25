@@ -64,6 +64,15 @@ in match history add: (opgg doesnt have these)
 
 What data is available in the API? how many of your queries are even possible? impossible?
 lets list out apis, what they do, what key values they have
+
+in short, use summoner-v4 to change IGN to puuid/id/accountid, 
+    - use puuid in match-v5 to access match history (matchids).
+        - use matchid to get data for one match
+    - use puuid in league-v4 to grab rank
+    - use puuid in champion-mastery-v4 to check mastery
+
+
+
 ACCOUNT-V1
 gets ingamename and server using puuid.
 (using this, can we track previous names past namechanges?)
@@ -78,7 +87,7 @@ account-v1 example output body:
 
 SUMMONER-v4 uses name, gets:
 accountid
-puuid -----globally unique------others are not----------------can use this to get gamename and server using Account-V1
+puuid ---globally unique---others are not---can use this to get gamename and server using Account-V1
 summonerid(id)
 all are encrypted. 
 

@@ -9,15 +9,31 @@ class SearchBar extends React.Component {
     {
         super(props);
         this.state = {
-            
+            region: "NA",
+            ingamename: "",
         };
+
+        this.handleNameChange = this.handleNameChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleNameChange(nameinput) {
+        this.setState({ingamename:nameinput});
+    }
+
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.state.value);
+        event.preventDefault();
     }
 
     render() {
         return (
             <div>
                 <RegionDropdown></RegionDropdown>
-                <SearchInput></SearchInput>
+                <SearchInput
+                    ingamename = {this.state.ingamename}
+                    onNameChange = {this.handleNameChange}
+                    />
                 <GoButton></GoButton>
             </div>
         );

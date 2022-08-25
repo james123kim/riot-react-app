@@ -124,8 +124,12 @@ ol, ul {
 .match {
   margin:10px;
   border: solid;
-  min-height: 100px;
+  min-height: 150px;
 }
+
+
+
+
 
 #page-navigation {
   margin: 10px auto;
