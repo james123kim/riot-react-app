@@ -3124,19 +3124,16 @@ example match data output (not timeline)
 }
 
 
-
-
-
 ----------------------------------------------------------------------------------------------------------------
 
 lets talk about data.
-Riot stores match data on match-v5. How far back can I go? 
+Riot stores match data on match-v5. How far back can I go?
 you can set 'count' to get 100 games.
 you can set 'start' to start anywhere from 1-1000.
 you can get up to the last 1000 games or up to 2 years whichever is less.
 
 For my project, I want to store previous data too. Matches from seasons ago. Riot will eventually delete this data from their servers.
-Therefore, it is necessary to make a list of WHAT needs to be stored on the backend to properly query matches from seasons ago. 
+Therefore, it is necessary to make a list of WHAT needs to be stored on the backend to properly query matches from seasons ago.
 The problem here is that I'm not familiar enough with the API to know this. But i will make a list of potential problems I need to cover.
 
 Rune reworks? item overhauls? does data dragon have previous items? Champion changes? 
@@ -3146,7 +3143,7 @@ Rune reworks? item overhauls? does data dragon have previous items? Champion cha
 
 
 
-So with this in mind, what should happen when I press "submit"? 
+So with this in mind, what should happen when I press "submit"?
 1) regiondropdown + ign should make a fetch request to summoner-v4 to get the puuid. 
 2) use the puuid in MATCH-v5 to get match history, 1-1000.  and UPDATE the database. 
     - should check the front of the database (most recently updated)

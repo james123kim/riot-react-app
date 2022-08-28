@@ -1,5 +1,4 @@
 import React from 'react';
-
 import RegionDropdown from "./regiondropdown";
 import SearchInput from "./searchinput";
 import SubmitButton from "./submitbutton";
