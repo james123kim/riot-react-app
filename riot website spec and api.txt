@@ -129,6 +129,7 @@ champion-v3 is useless lol
 
 LEAGUE-V4 / LEAGUE-EXP-v4
 can grab rank of player. can also grab whole master, gm, chal ranked players.
+needs summonerID, NOT puuid.
 
 veteran - played 100 games or more in division
 freshblood - new to division

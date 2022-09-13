@@ -75,7 +75,7 @@ ol, ul {
   padding:10px;
 }
 
-#profile {
+.profile-container {
   display:flex;
 }
 
@@ -130,4 +130,17 @@ ol, ul {
   border:solid;
   height:80px;
   width: 300px; 
+  overflow:auto;
+  display:flex;
+}
+
+#page-navigation > button{
+  margin:5px;
+  border:solid;
+  min-width: 50px;
+  font-size: 20px;
+}
+
+.selected {
+  
 }

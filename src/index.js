@@ -33,19 +33,19 @@ app
             matches
                 match
                     matchtype
-                    yourchampionitemsummsrunes
+                    championitemsummsrunes
                         champion
                         ingamelevel
                         summonerspells
                         runes
                         items
-                    yourmatchstats
+                    matchstats
                         kda
                         killparticipation
                         controlwards
                         cs (total and per min)
                         averagerank(exclude outliers)
-                    teampcomp
+                    teamcomp
                         option to fix matchups/lanes
                     wholematchstats
                     moredetails       -implement later
@@ -62,7 +62,8 @@ class App extends React.Component {
         this.state = {
             region: "NA1",
             ingamename: "",
-            riottoken: ""
+            matchList: [],
+            profile: [],
         };
 
         this.handleRegionChange = this.handleRegionChange.bind(this);
@@ -72,37 +73,25 @@ class App extends React.Component {
 
     handleRegionChange(regioninput) {
         this.setState({region:regioninput});
-        console.log(this.state.region);
     }
 
     handleNameChange(nameinput) {
         this.setState({ingamename:nameinput});
-        console.log(this.state.ingamename);
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log("hi");
-
-        let url = 'https://'+this.state.region+'.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+this.state.ingamename;
-        console.log(url);
-        let data = {
-            method:'GET',
-            mode: 'no-cors',
-            headers: {
-                "X-Riot-Token": "XXXXX"
-            },
-        };
-        fetch(url, data) 
-            .then(function(response) {   
+        fetch("http://localhost:4000/getMatchHistory?ingamename="+this.state.ingamename+"&region="+this.state.region)
+            .then(function(response) {
                 return response.json();
             })
-            .then(function(data) {
+            .then(data => {//anonymous function here to make the context of 'this' the parent function automatically
                 console.log(data);
+                this.setState({profile:data.profileData, matchList:data.matchData});
             })
             .catch(function(error) {
                 console.log(error);
-        });
+            });
     }
 
     render() {
@@ -114,7 +103,10 @@ class App extends React.Component {
                     ingamename = {this.state.ingamename}
                     onFormSubmit = {this.handleSubmit}
                     />
-                <QueriedInformation />
+                <QueriedInformation
+                    matchList = {this.state.matchList}
+                    profileData = {this.state.profile}
+                    />
             </div>
             );
     }

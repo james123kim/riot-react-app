@@ -8,10 +8,12 @@ class QueriedInformation extends React.Component {
         return (
             <div id = "queried-information">
                 <div id = "profile-and-statistics">
-                    <Profile />
-                    <Statistics />
+                    <Profile 
+                        profileData = {this.props.profileData}
+                        />
+                    <Statistics matchList = {this.props.matchList}/>
                 </div>
-                <MatchHistory />
+                <MatchHistory matchList = {this.props.matchList}/>
             </div>
         );
     }
