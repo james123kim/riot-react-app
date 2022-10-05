@@ -30,28 +30,27 @@ app
             sidebar
                 championsplayed
                 other info maybe add here later
-            matches
-                match
-                    matchtype
-                    championitemsummsrunes
-                        champion
-                        ingamelevel
-                        summonerspells
-                        runes
-                        items
-                    matchstats
-                        kda
-                        killparticipation
-                        controlwards
-                        cs (total and per min)
-                        averagerank(exclude outliers)
-                    teamcomp
-                        option to fix matchups/lanes
-                    wholematchstats
-                    moredetails       -implement later
-                match
-                match
-                pagenav
+            match
+                matchtype
+                championitemsummsrunes
+                    champion
+                    ingamelevel
+                    summonerspells
+                    runes
+                    items
+                matchstats
+                    kda
+                    killparticipation
+                    controlwards
+                    cs (total and per min)
+                    averagerank(exclude outliers)
+                teamcomp
+                    option to fix matchups/lanes
+                wholematchstats
+                moredetails       -implement later
+            match
+            match
+            pagenav
 
 */
 
@@ -62,6 +61,7 @@ class App extends React.Component {
         this.state = {
             region: "NA1",
             ingamename: "",
+            submittedOnce:false,
             matchList: [],
             profile: [],
         };
@@ -81,13 +81,14 @@ class App extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        
         fetch("http://localhost:4000/getMatchHistory?ingamename="+this.state.ingamename+"&region="+this.state.region)
             .then(function(response) {
                 return response.json();
             })
             .then(data => {//anonymous function here to make the context of 'this' the parent function automatically
                 console.log(data);
-                this.setState({profile:data.profileData, matchList:data.matchData});
+                this.setState({profile:data.profileData, matchList:data.matchData, submittedOnce:true,});
             })
             .catch(function(error) {
                 console.log(error);
@@ -104,6 +105,7 @@ class App extends React.Component {
                     onFormSubmit = {this.handleSubmit}
                     />
                 <QueriedInformation
+                    submittedOnce = {this.state.submittedOnce}
                     matchList = {this.state.matchList}
                     profileData = {this.state.profile}
                     />

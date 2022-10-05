@@ -142,5 +142,5 @@ ol, ul {
 }
 
 .selected {
-  
+  border-color:red;
 }

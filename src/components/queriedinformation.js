@@ -5,6 +5,12 @@ import MatchHistory from './matchhistory';
 
 class QueriedInformation extends React.Component {
     render() {
+        if(!this.props.submittedOnce)
+        {
+            return(
+                <div></div>
+            );
+        }
         return (
             <div id = "queried-information">
                 <div id = "profile-and-statistics">

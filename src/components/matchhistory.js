@@ -15,12 +15,9 @@ class MatchHistory extends React.Component {
 
     handlePageNumberChange(num) {
         this.setState({pageNumber:num});
-        
     }
 
     render() {
-        
-
         return (
             <div id = "match-history">
                 <div id = "matches">
@@ -35,6 +32,7 @@ class MatchHistory extends React.Component {
                     <Match />
                     <Match />
                     <PageNavigation matchList = {this.props.matchList}
+                        pageNumber = {this.state.pageNumber}
                         onPageClick = {this.handlePageNumberChange}
                         />
                 </div>
