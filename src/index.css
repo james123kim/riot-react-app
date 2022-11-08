@@ -119,6 +119,7 @@ ol, ul {
 }
 
 .match {
+  display:flex;
   margin:10px;
   border: solid;
   min-height: 150px;
@@ -136,11 +137,27 @@ ol, ul {
 
 #page-navigation > button{
   margin:5px;
-  border:solid;
+  border:solid black;
   min-width: 50px;
   font-size: 20px;
 }
 
-.selected {
-  border-color:red;
+#page-navigation > .selected {
+  border:6px solid red; 
+}
+
+.matchinfo-box {
+  padding:8px;
+}
+
+.championitemsummsrunes-box {
+  padding:8px;
+}
+
+.matchstats-box {
+  padding:8px;
+}
+
+.teamcomp-box {
+  padding:8px;
 }

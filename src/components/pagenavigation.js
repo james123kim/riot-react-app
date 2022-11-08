@@ -11,7 +11,7 @@ class PageNavigation extends React.Component {
     handlePageClick(e) {
         e.preventDefault();
 
-        this.props.handlePageNumberChange(e);
+        this.props.handlePageClick(e);
     }
 
 
