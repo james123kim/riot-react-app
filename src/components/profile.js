@@ -3,10 +3,11 @@ import React from 'react';
 class Profile extends React.Component {
     render() {
         let profileData = this.props.profileData;
-        if(profileData===undefined || profileData.length == 0 || profileData[0].queueType != "RANKED_SOLO_5x5")
+        if(profileData.length===0)
         {
-            return (<div id = "profile" className = "profile-statistics-item"></div>);
+            return(<div id = "profile" className = "profile-statistics-item"> no ranked data available </div>)
         }
+
         return (
             <div id = "profile" className = "profile-statistics-item">
                 <div className = "profile-container">

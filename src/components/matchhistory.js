@@ -13,7 +13,7 @@ class MatchHistory extends React.Component {
         this.handlePageNumberChange = this.handlePageNumberChange.bind(this);
     }
 
-    handlePageNumberChange(e) {
+    handlePageNumberChange(e)  {
         this.setState({pageNumber:parseInt(e.target.innerHTML)});
     }
 
@@ -21,12 +21,14 @@ class MatchHistory extends React.Component {
         const matches = [];
         for(let i = 1; i <= 10; i++)
         {
-            if((this.state.pageNumber-1)*10+i >this.props.matchList.length )
+            let matchNum = (this.state.pageNumber-1)*10+i;
+            if(matchNum >this.props.matchList.length || 'message' in this.props.matchList[matchNum-1])
             {
                 break;
             }
             matches.push(
-                <Match matchDetails = {this.props.matchList[(this.state.pageNumber-1)*10+i-1]}
+                <Match key = {this.props.matchList[matchNum-1].metadata.matchId} 
+                    matchDetails = {this.props.matchList[matchNum-1]}
                     />
             );
         }

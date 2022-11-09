@@ -61,7 +61,7 @@ class App extends React.Component {
         this.state = {
             region: "NA1",
             ingamename: "",
-            submittedOnce:false,
+            lastSubmittedName:"",
             matchList: [],
             profile: [],
         };
@@ -88,7 +88,11 @@ class App extends React.Component {
             })
             .then(data => {//anonymous function here to make the context of 'this' the parent function automatically
                 console.log(data);
-                this.setState({profile:data.profileData, matchList:data.matchData, submittedOnce:true,});
+                this.setState((state) => ({
+                    profile:data.profileData, 
+                    matchList:data.matchData, 
+                    lastSubmittedName:state.ingamename
+                }));
             })
             .catch(function(error) {
                 console.log(error);
