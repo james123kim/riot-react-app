@@ -61,9 +61,11 @@ class App extends React.Component {
         this.state = {
             region: "NA1",
             ingamename: "",
+            initialSubmit: false,
             lastSubmittedName:"",
             matchList: [],
             profile: [],
+            summoner: [],
         };
 
         this.handleRegionChange = this.handleRegionChange.bind(this);
@@ -91,7 +93,9 @@ class App extends React.Component {
                 this.setState((state) => ({
                     profile:data.profileData, 
                     matchList:data.matchData, 
-                    lastSubmittedName:state.ingamename
+                    initialSubmit: true,
+                    lastSubmittedName:state.ingamename,
+                    summoner:data.summonerData,
                 }));
             })
             .catch(function(error) {
@@ -109,9 +113,11 @@ class App extends React.Component {
                     onFormSubmit = {this.handleSubmit}
                     />
                 <QueriedInformation
+                    initialSubmit = {this.state.initialSubmit}
                     submittedOnce = {this.state.submittedOnce}
                     matchList = {this.state.matchList}
                     profileData = {this.state.profile}
+                    summonerData = {this.state.summoner}
                     />
             </div>
             );

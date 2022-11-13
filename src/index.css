@@ -124,7 +124,12 @@ ol, ul {
   border: solid;
   min-height: 150px;
 }
-
+.match.victory {
+  background-color: #5884ec;
+}
+.match.defeat {
+  background-color: #f04454;
+}
 
 #page-navigation {
   margin: 10px auto;
@@ -150,8 +155,70 @@ ol, ul {
   padding:8px;
 }
 
-.championitemsummsrunes-box {
+.matchinfo-box {
   padding:8px;
+}
+
+.matchinfo-box > div {
+  display:flex;
+}
+
+.player {
+  display:flex;
+  justify-content: center;
+}
+.champ-summs {
+  display:flex;
+}
+.champ-icon {
+  position:relative;
+}
+.champ-icon img {
+}
+.champ-icon span {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom: 0;
+  width: 20px;
+  display:flex;
+  justify-content: center;
+  color:white;
+  background: #202D37;
+}
+.items-123 {
+  display:flex;
+}
+.items-456 {
+  display:flex;
+}
+.kda {
+  display:flex;
+}
+.stats {
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.runes {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.primary-secondary-runes {
+  display:flex;
+}
+.primary-runes {
+  display:flex;
+  flex-direction: column;
+}
+.secondary-runes {
+  display:flex;
+  flex-direction: column;
+}
+.shards {
+  display:flex;
+  flex-direction: column;
 }
 
 .matchstats-box {

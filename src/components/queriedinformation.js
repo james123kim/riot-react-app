@@ -5,6 +5,9 @@ import MatchHistory from './matchhistory';
 
 class QueriedInformation extends React.Component {
     render() {
+        if(this.props.initialSubmit === false) {
+            return (<div id = "queried-information"></div>);
+        }
         let profileD = this.props.profileData;
         if(Object.prototype.toString.call(profileD) !== '[object Array]')
         {
@@ -16,11 +19,11 @@ class QueriedInformation extends React.Component {
             <div id = "queried-information">
                 <div id = "profile-and-statistics">
                     <Profile 
-                        profileData = {this.props.profileData}
+                        profileData = {profileD}
                         />
-                    <Statistics matchList = {this.props.matchList}/>
+                    <Statistics summonerData = {this.props.summonerData} matchList = {this.props.matchList}/>
                 </div>
-                <MatchHistory matchList = {this.props.matchList}/>
+                <MatchHistory summonerData = {this.props.summonerData} matchList = {this.props.matchList}/>
             </div>
         );
     }
