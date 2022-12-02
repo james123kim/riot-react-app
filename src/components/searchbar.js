@@ -1,13 +1,11 @@
 import React from 'react';
 import RegionDropdown from "./regiondropdown";
 import SearchInput from "./searchinput";
-import SubmitButton from "./submitbutton";
 
 class SearchBar extends React.Component {
     constructor(props)
     {
         super(props);
-
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -27,7 +25,7 @@ class SearchBar extends React.Component {
                     handleNameChange = {this.props.handleNameChange}
                     ingamename = {this.props.ingamename}
                     />
-                <SubmitButton/>
+                <input type= "submit" value = {this.props.fetching ? "loading...":"Submit"} disabled = {this.props.fetching}></input>
             </form>
         );
     }

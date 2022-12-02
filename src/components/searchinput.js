@@ -10,9 +10,15 @@ class SearchInput extends React.Component {
         this.props.handleNameChange(e.target.value);
     }
 
+    handleNameClick(name)
+    {
+        this.innerHTML = name;
+    }
+
     render() {
         return (
             <input
+                id = 'searchinput'
                 type="text"
                 placeholder = "Summoner Name"
                 onChange = {this.handleChange}

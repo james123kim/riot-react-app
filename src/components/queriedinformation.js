@@ -23,7 +23,13 @@ class QueriedInformation extends React.Component {
                         />
                     <Statistics summonerData = {this.props.summonerData} matchList = {this.props.matchList}/>
                 </div>
-                <MatchHistory summonerData = {this.props.summonerData} matchList = {this.props.matchList}/>
+                <MatchHistory summonerData = {this.props.summonerData} 
+                    matchList = {this.props.matchList}
+                    onNameClick = {this.props.onNameClick}
+                    convertGameVersion = {this.props.convertGameVersion}
+                    versionData= {this.props.versionData}
+                    queueMap={this.props.queueMap}
+                    />
             </div>
         );
     }

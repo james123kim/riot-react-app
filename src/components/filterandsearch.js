@@ -12,6 +12,7 @@ class FilterAndSearch extends React.Component {
                     handleNameChange = {this.props.handleNameChange}
                     ingamename = {this.props.ingamename}
                     onFormSubmit = {this.props.onFormSubmit}
+                    fetching = {this.props.fetching}
                     />
                 <FilterList />
             </div>

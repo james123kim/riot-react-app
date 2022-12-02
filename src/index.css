@@ -1,230 +1,276 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+	font: 14px "Century Gothic", Futura, sans-serif;
+	margin: 20px;
 }
 
-ol, ul {
-  padding-left: 30px;
+ol,
+ul {
+	padding-left: 30px;
 }
 
 #filter-container {
-  display:flex;
-  flex-direction: column;
-  border:solid;
-  margin:20px 0px;
+	display: flex;
+	flex-direction: column;
+	border: solid;
+	margin: 20px 0px;
 }
 
 #filter-title {
-  margin: 10px;
+	margin: 10px;
 }
 
 #filters-and-details {
-  display:flex;
-  height: 500px;
+	display: flex;
+	height: 500px;
 
 }
 
 #filter-box {
-  padding:0;
+	padding: 0;
 }
 
 #filter-list {
-  height:100%;
-  overflow-y: scroll;
-  list-style: none;
-  padding:0;
-  margin:0;
+	height: 100%;
+	overflow-y: scroll;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 #filter-list li {
-  border: solid;
-  margin:10px;
-  padding:10px;
-  min-height: 100px;
+	border: solid;
+	margin: 10px;
+	padding: 10px;
+	min-height: 100px;
 }
 
 .filters-and-details-item {
-  border:solid;
-  margin:10px;
-  flex:1;
+	border: solid;
+	margin: 10px;
+	flex: 1;
 }
 
 #queried-information {
-  border:solid;
-  min-height: 800px;
-  min-width: 1000px;
+	border: solid;
+	min-height: 800px;
+	min-width: 1000px;
 }
 
 #profile-and-statistics {
-  display:flex;
-  min-height:200px;
+	display: flex;
+	min-height: 200px;
 }
 
 #profile {
-  border:solid;
-  flex:1;
+	border: solid;
+	flex: 1;
 }
 
 #statistics {
-  border:solid;
-  flex:2;
+	border: solid;
+	flex: 2;
 }
 
 .profile-statistics-item {
-  margin:10px;
-  padding:10px;
+	margin: 10px;
+	padding: 10px;
 }
 
 .profile-container {
-  display:flex;
+	display: flex;
 }
 
 #profile-summoner-info {
-  margin:10px;
+	margin: 10px;
 }
 
 #summoner-icon {
-  border: solid;
-  width: 80px;
-  height: 80px;
+	border: solid;
+	width: 80px;
+	height: 80px;
 }
 
 #profile-ranked-info {
-  margin:10px;
+	margin: 10px;
 }
 
 #tier-icon {
-  border: solid;
-  width: 80px;
-  height: 80px;
+	border: solid;
+	width: 80px;
+	height: 80px;
 }
 
 #match-history {
-  border:solid;
-  margin:10px;
-  height:100%;
-  display:flex;
+	border: solid;
+	margin: 10px;
+	height: 100%;
+	display: flex;
 }
 
 #sidebar {
-  border:solid;
-  margin:10px;
-  min-width: 300px;
-  height:100%;
-  flex: 1;
+	border: solid;
+	margin: 10px;
+	min-width: 300px;
+	height: 100%;
+	flex: 1;
 }
 
 #matches {
-  flex: 3;
+	flex: 4;
 }
 
 .match {
-  display:flex;
-  margin:10px;
-  border: solid;
-  min-height: 150px;
+	display: flex;
+	margin: 10px;
+	border: solid;
+	min-height: 150px;
+	max-width: 850px;
+	min-width: 750px;
 }
-.match.victory {
-  background-color: #5884ec;
+
+.match.Victory {
+	background-color: #5884ec;
 }
-.match.defeat {
-  background-color: #f04454;
+
+.match.Defeat {
+	background-color: #f04454;
 }
 
 #page-navigation {
-  margin: 10px auto;
-  border:solid;
-  height:80px;
-  width: 300px; 
-  overflow:auto;
-  display:flex;
+	margin: 10px auto;
+	border: solid;
+	height: 80px;
+	width: 300px;
+	overflow: auto;
+	display: flex;
 }
 
-#page-navigation > button{
-  margin:5px;
-  border:solid black;
-  min-width: 50px;
-  font-size: 20px;
+#page-navigation>button {
+	margin: 5px;
+	border: solid black;
+	min-width: 50px;
+	font-size: 20px;
 }
 
-#page-navigation > .selected {
-  border:6px solid red; 
+#page-navigation>.selected {
+	border: 6px solid red;
+}
+
+.matchtype-box {
+	padding: 8px 0;
+	max-width: 100px;
 }
 
 .matchinfo-box {
-  padding:8px;
+	padding: 8px 0;
 }
 
-.matchinfo-box {
-  padding:8px;
-}
-
-.matchinfo-box > div {
-  display:flex;
+.matchinfo-box>div {
+	display: flex;
 }
 
 .player {
-  display:flex;
-  justify-content: center;
+	display: flex;
+	justify-content: center;
 }
+
+.player>div {
+	margin: 0 5px;
+}
+
+.champ-summs-items {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
 .champ-summs {
-  display:flex;
+	display: flex;
 }
+
 .champ-icon {
-  position:relative;
+	position: relative;
 }
-.champ-icon img {
-}
+
 .champ-icon span {
-  position:absolute;
-  left:0;
-  right:0;
-  bottom: 0;
-  width: 20px;
-  display:flex;
-  justify-content: center;
-  color:white;
-  background: #202D37;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 20px;
+	display: flex;
+	justify-content: center;
+	color: white;
+	background: #202D37;
 }
+
 .items-123 {
-  display:flex;
+	display: flex;
 }
+
 .items-456 {
-  display:flex;
+	display: flex;
 }
+
 .kda {
-  display:flex;
+	display: flex;
 }
+
 .stats {
-  display:flex;
-  flex-direction: column;
-  align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
+
 .runes {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
+
 .primary-secondary-runes {
-  display:flex;
+	display: flex;
 }
+
 .primary-runes {
-  display:flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
+
 .secondary-runes {
-  display:flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
+
 .shards {
-  display:flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .matchstats-box {
-  padding:8px;
+	padding: 8px;
 }
 
-.teamcomp-box {
-  padding:8px;
+.participants-box {
+	padding: 8px;
+	display: flex;
+}
+
+ul {
+	padding-left: 0;
+}
+
+.participants-box li {
+	list-style: none;
+}
+
+.teamIgn {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	max-width: 75px;
+}
+
+li>img {
+	padding-right: 5px
 }

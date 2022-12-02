@@ -30,6 +30,10 @@ class MatchHistory extends React.Component {
                 <Match key = {this.props.matchList[matchNum-1].metadata.matchId} 
                     matchDetails = {this.props.matchList[matchNum-1]}
                     summonerData = {this.props.summonerData}
+                    onNameClick = {this.props.onNameClick}
+                    convertGameVersion = {this.props.convertGameVersion}
+                    versionData = {this.props.versionData}
+                    queueMap = {this.props.queueMap}
                     />
             );
         }
