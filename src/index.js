@@ -71,6 +71,7 @@ class App extends React.Component {
             //fetched from online api
             versions: [],
             queueMap: null,
+            iconMap:null,
             versionData: {},
             /*
             versionData holds data specific to versions. such as items, runes, summs.
@@ -99,7 +100,9 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://ddragon.leagueoflegends.com/api/versions.json')
+        fetch('http://ddragon.leagueoflegends.com/api/versions.json', {
+            cache: "reload"
+        })
             .then(function (response) {
                 return response.json();
             })
@@ -120,7 +123,7 @@ class App extends React.Component {
                 return response.json();
             })
             .then((data) => {
-                for (let i = 0; i < data.length; i++) {
+                for (let i = 0; i < data.length; i++) {   
                     let str;
                     if (i === 0) str = data[i].map;
                     else str = data[i].description;
@@ -135,8 +138,7 @@ class App extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
-
-
+        
 
     }
 
@@ -148,114 +150,80 @@ class App extends React.Component {
         this.setState({ ingamename: nameinput });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
         this.setState({ fetching: true });
-        fetch("http://localhost:4000/getMatchHistory?ingamename=" + this.state.ingamename + "&region=" + this.state.region)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(data => {//anonymous function here to make the context of 'this' the parent function automatically
-                console.log(data);
-                let matches = data.matchData;
+        const data = await fetch("http://localhost:4000/getMatchHistory?ingamename=" + this.state.ingamename + "&region=" + this.state.region);
+        const json = await data.json();
+        console.log(json);
 
-                let newVersionData = {};
-                for(let i of matches) {
-                    //if the version given is not the MOST CURRENT version, update the maps(items, runes, summoners) to include it
-                    if('message' in i) {break;}
-                    
-                    let version = this.convertGameVersion(i.info.gameVersion);
-                    if (!(version in this.state.versionData)) {
-                        let x = this.addVersionData(version);
-                        newVersionData[version] = x;
-                    }
-                }
+        let matches = await json.matchData;
+        let newVersionData = {};
+        console.log('updating versiondata');
 
-                this.setState((state) => ({
-                    profile: data.profileData,
-                    matchList: data.matchData,
-                    initialSubmit: true,
-                    lastSubmittedName: state.ingamename,
-                    summoner: data.summonerData,
-                    versionData: newVersionData,
-                    fetching: false,
-                }));
-                console.log('updating versiondata');
-            })
-            .catch((error) => {
-                console.log(error);
-                this.setState({ fetching: false });
-            });
+        for(let i of matches) {
+            //if the version given is not the MOST CURRENT version, update the maps(items, runes, summoners) to include it
+            if('message' in i) {break;}
+            let version = this.convertGameVersion(i.info.gameVersion);
+            if (!(version in this.state.versionData)) {
+                let x = await this.addVersionData(version);
+                newVersionData[version] = x;
+            }
+        }
+        console.log(newVersionData);
+        
+        this.setState((state) => ({
+            profile: json.profileData,
+            matchList: json.matchData,
+            initialSubmit: true,
+            lastSubmittedName: state.ingamename,
+            summoner: json.summonerData,
+            versionData: newVersionData,
+            fetching: false,
+        }));
     }
     
-    addVersionData(version) {
+    async addVersionData(version) {
         let tempObject = {};
-        fetch('http://ddragon.leagueoflegends.com/cdn/' + version + '/data/en_US/item.json')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                tempObject['items'] = data;
-                tempObject['itemMap'] = {};
-                let x = data['data'];
-                for(let i in x) {
-                    tempObject['itemMap'][i] = x[i].image.full;
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        let res1 = await fetch('http://ddragon.leagueoflegends.com/cdn/' + version + '/data/en_US/item.json');
+        let json1= await res1.json();
+        let res2 = await fetch('http://ddragon.leagueoflegends.com/cdn/' + version + '/data/en_US/summoner.json');
+        let json2= await res2.json();
+        let res3 = await fetch('http://ddragon.leagueoflegends.com/cdn/' + version + '/data/en_US/runesReforged.json');
+        let json3= await res3.json();
 
-        fetch('http://ddragon.leagueoflegends.com/cdn/' + version + '/data/en_US/summoner.json')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function(data) {
-                tempObject['summonerSpells'] = data;
-                tempObject['summMap'] = {};
-                let x = data['data'];
-                for(let i in x) {
-                    tempObject['summMap'][x[i].key] = x[i].id;
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        tempObject['items'] = json1;
+        tempObject['itemMap'] = {};
+        let x = json1['data'];
+        for(let i in x) {
+            tempObject['itemMap'][i] = x[i].image.full;
+        }
 
-        fetch('http://ddragon.leagueoflegends.com/cdn/' + version + '/data/en_US/runesReforged.json')
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (data) {
-                tempObject['runes'] = data;
-                tempObject['runeMap'] = {};
-                for(let i = 0; i < data.length; i++) {
-                    let slots = data[i].slots
-                    for (let j = 0; j < slots.length; j++) {
-                        let runes = slots[j].runes;
-                        for (let k = 0; k < runes.length; k++) {
-                            let rune = runes[k];
-                            tempObject['runeMap'][rune.id] = rune.icon;
-                        }
-                    }
-                }
-                tempObject['runeMap'][5001] = 'perk-images/StatMods/StatModsHealthScalingIcon.png'; //health
-                tempObject['runeMap'][5002] = 'perk-images/StatMods/StatModsArmorIcon.png'; //armor
-                tempObject['runeMap'][5003] = 'perk-images/StatMods/StatModsMagicResIcon.MagicResist_Fix.png'; //mr
-                tempObject['runeMap'][5005] = 'perk-images/StatMods/StatModsAttackSpeedIcon.png'; //atk speed
-                tempObject['runeMap'][5007] = 'perk-images/StatMods/StatModsCDRScalingIcon.png'; //cdr
-                tempObject['runeMap'][5008] = 'perk-images/StatMods/StatModsAdaptiveForceIcon.png'; //adaptive
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        tempObject['summonerSpells'] = json2;
+        tempObject['summMap'] = {};
+        let y = json2['data'];
+        for(let i in y) {
+            tempObject['summMap'][y[i].key] = y[i].id;
+        }
 
-        /*this.setState(prevState => ({
-            versionData: {
-                ...prevState.versionData,
-                [version]:tempObject
+        tempObject['runes'] = json3;
+        tempObject['runeMap'] = {};
+        for(let i = 0; i < json3.length; i++) {
+            let slots = json3[i].slots
+            for (let j = 0; j < slots.length; j++) {
+                let runes = slots[j].runes;
+                for (let k = 0; k < runes.length; k++) {
+                    let rune = runes[k];
+                    tempObject['runeMap'][rune.id] = rune.icon;
+                }
             }
-        }));*/
+        }
+        tempObject['runeMap'][5001] = 'perk-images/StatMods/StatModsHealthScalingIcon.png'; //health
+        tempObject['runeMap'][5002] = 'perk-images/StatMods/StatModsArmorIcon.png'; //armor
+        tempObject['runeMap'][5003] = 'perk-images/StatMods/StatModsMagicResIcon.MagicResist_Fix.png'; //mr
+        tempObject['runeMap'][5005] = 'perk-images/StatMods/StatModsAttackSpeedIcon.png'; //atk speed
+        tempObject['runeMap'][5007] = 'perk-images/StatMods/StatModsCDRScalingIcon.png'; //cdr
+        tempObject['runeMap'][5008] = 'perk-images/StatMods/StatModsAdaptiveForceIcon.png'; //adaptive
 
         return tempObject;
     }
@@ -297,7 +265,7 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <FilterAndSearch handleRegionChange={this.handleRegionChange}
+                <FilterAndSearch handleRegionChange={     this.handleRegionChange}
                     region={this.state.region}
                     handleNameChange={this.handleNameChange}
                     ingamename={this.state.ingamename}
@@ -312,6 +280,7 @@ class App extends React.Component {
                     summonerData={this.state.summoner}
                     onNameClick={this.handleNameChange}
                     convertGameVersion={this.convertGameVersion}
+                    mostRecentVersion={this.state.versions[0]}
                     versionData={this.state.versionData}
                     queueMap={this.state.queueMap}
                 />

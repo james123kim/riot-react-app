@@ -1,8 +1,5 @@
 import React from 'react';
-import summoners from './datadragon/summoner.json';
-import runes from './datadragon/runesReforged.json';
-import items from './datadragon/items.json';
-import { runeMap, itemMap, timeSince, timeFormat, getPlayer, round, } from './assets.js';
+import { timeSince, timeFormat, getPlayer, round, } from './functions.js';
 
 class Match extends React.Component {
 	constructor(props) {
@@ -28,18 +25,14 @@ class Match extends React.Component {
 
 		//this line needs to be near top, updates datadragon
 		let version = this.props.convertGameVersion(this.props.matchDetails.info.gameVersion);
-		console.log(version);
-		console.log(this.props.versionData);
-		console.log(this.props.versionData[''+version]);
-		console.log(this.props.versionData[''+version].summMap);
-		//console.log(this.props.versionData[''+version].summMap[player.summoner1Id]);
+		let versionMap = this.props.versionData[''+version];
 
 		let items123 = [];
 		for (let i = 0; i < 3; i++) {
 			let str = 'item' + i;
 			if (player[str] !== 0) {
-				items123.push(<img src={'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + itemMap.get('' + player[str])}
-					alt={itemMap.get('' + player[str])}
+				items123.push(<img src={'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + versionMap.itemMap['' + player[str]]}
+					alt={versionMap.itemMap['' + player[str]]}
 					width='30px'
 					height='30px'
 					key={'' + i}
@@ -51,8 +44,8 @@ class Match extends React.Component {
 			let str = 'item' + i;
 			if (player[str] !== 0) {
 				items456.push(
-					<img src={'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + itemMap.get('' + player[str])}
-						alt={itemMap.get('' + player[str])}
+					<img src={'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/item/' + versionMap.itemMap['' + player[str]]}
+						alt={versionMap.itemMap['' + player[str]]}
 						width='30px'
 						height='30px'
 						key={'' + i}
@@ -121,10 +114,10 @@ class Match extends React.Component {
 									</div>
 									<div className='summs'>
 										<div className='summ'>
-											<img src={'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/spell/' + this.props.versionData[''+version]['summMap'][player.summoner1Id] + '.png'} alt={player.summoner1Id} width='30px' height='30px' />
+											<img src={'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/spell/' + versionMap.summMap[player.summoner1Id] + '.png'} alt={player.summoner1Id} width='30px' height='30px' />
 										</div>
 										<div className='summ'>
-											<img src={'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/spell/' + this.props.versionData[''+version]['summMap'][player.summoner2Id] + '.png'} alt={player.summoner2Id} width='30px' height='30px' />
+											<img src={'http://ddragon.leagueoflegends.com/cdn/' + version + '/img/spell/' + versionMap.summMap[player.summoner2Id] + '.png'} alt={player.summoner2Id} width='30px' height='30px' />
 										</div>
 									</div>
 								</div>
@@ -138,21 +131,21 @@ class Match extends React.Component {
 								</div>
 							</div>
 							<div className='runes'>
-								<div className='keystone'><img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.styles[0].selections[0].perk)} width='50px' height='50px' /></div>
+								<div className='keystone'><img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.styles[0].selections[0].perk]} width='50px' height='50px' /></div>
 								<div className='primary-secondary-runes'>
 									<div className='primary-runes'>
-										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.styles[0].selections[1].perk)} alt={runeMap.get(player.perks.styles[0].selections[1].perk)} width='30px' height='30px' />
-										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.styles[0].selections[2].perk)} alt={runeMap.get(player.perks.styles[0].selections[2].perk)} width='30px' height='30px' />
-										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.styles[0].selections[3].perk)} alt={runeMap.get(player.perks.styles[0].selections[3].perk)} width='30px' height='30px' />
+										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.styles[0].selections[1].perk]} alt={versionMap[player.perks.styles[0].selections[1].perk]} width='30px' height='30px' />
+										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.styles[0].selections[2].perk]} alt={versionMap[player.perks.styles[0].selections[2].perk]} width='30px' height='30px' />
+										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.styles[0].selections[3].perk]} alt={versionMap[player.perks.styles[0].selections[3].perk]} width='30px' height='30px' />
 									</div>
 									<div className='secondary-runes'>
-										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.styles[1].selections[0].perk)} alt={runeMap.get(player.perks.styles[1].selections[0].perk)} width='30px' height='30px' />
-										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.styles[1].selections[1].perk)} alt={runeMap.get(player.perks.styles[1].selections[1].perk)} width='30px' height='30px' />
+										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.styles[1].selections[0].perk]} alt={versionMap[player.perks.styles[1].selections[0].perk]} width='30px' height='30px' />
+										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.styles[1].selections[1].perk]} alt={versionMap[player.perks.styles[1].selections[1].perk]} width='30px' height='30px' />
 									</div>
 									<div className="shards">
-										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.statPerks.offense)} alt={runeMap.get(player.perks.statPerks.offense)} width='30px' height='30px' />
-										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.statPerks.flex)} alt={runeMap.get(player.perks.statPerks.flex)} width='30px' height='30px' />
-										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + runeMap.get(player.perks.statPerks.defense)} alt={runeMap.get(player.perks.statPerks.defense)} width='30px' height='30px' />
+										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.statPerks.offense]} alt={versionMap[player.perks.statPerks.offense]} width='30px' height='30px' />
+										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.statPerks.flex]} alt={versionMap[player.perks.statPerks.flex]} width='30px' height='30px' />
+										<img src={'https://ddragon.leagueoflegends.com/cdn/img/' + versionMap.runeMap[player.perks.statPerks.defense]} alt={versionMap[player.perks.statPerks.defense]} width='30px' height='30px' />
 									</div>
 								</div>
 							</div>

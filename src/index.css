@@ -71,6 +71,39 @@ ul {
 	flex: 2;
 }
 
+#statistics h3 {
+	margin:4px;
+}
+
+#statistics p {
+	margin:4px;
+}
+
+#statistics > div {
+	display:flex;
+	flex-direction: row;
+}
+
+.percent-bar {
+	border: solid 1px;
+	height: 20px;
+	width: 100px;
+	display:flex;
+	flex-direction: row;
+}
+
+.percent-bar-blue {
+
+	background-color: #5884ec;
+}
+.percent-bar-gray {
+	background-color:#78828a;
+}
+.percent-bar-red {
+	background-color:#f04454
+}
+
+
 .profile-statistics-item {
 	margin: 10px;
 	padding: 10px;
@@ -90,14 +123,23 @@ ul {
 	height: 80px;
 }
 
+#summoner-icon > img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
 #profile-ranked-info {
 	margin: 10px;
 }
 
 #tier-icon {
-	border: solid;
 	width: 80px;
 	height: 80px;
+}
+
+#tier-icon img{
+	max-width: 100%;
+	max-height: 100%;
 }
 
 #match-history {
